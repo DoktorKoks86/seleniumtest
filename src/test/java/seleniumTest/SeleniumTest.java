@@ -1,30 +1,16 @@
 package seleniumTest;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 public class SeleniumTest extends Page_Object {
 
 	@Before
 	public void setUp() throws Exception {
 		startBrowser();
 		driver.manage().window().maximize();
-//		Thread.sleep(3000);
-		WebElement myDynamicElement = (new WebDriverWait(driver, 10)).until(
-				ExpectedConditions.presenceOfElementLocated(By.className("cmp-button_button cmp-intro_acceptAll")));
-		pushThebutton();
+		Thread.sleep(3000);
 	}
 
 	@After
@@ -35,17 +21,22 @@ public class SeleniumTest extends Page_Object {
 	@Test
 	public void test3() throws InterruptedException {
 
-		Assert.assertEquals(driver.getCurrentUrl(), url, " url is correct");
-		Assert.assertTrue(true, textSportOnet.getText());
-		System.out.println(textSportOnet + " wystêpuje na stronie onet");
-		System.out.println("the mentioned test is executed");
+		Assert.assertTrue(popUpWindow().isDisplayed(), "not displayed");
+		Assert.assertTrue(getToServiceButton().isDisplayed(), "not displayed");
+		Assert.assertEquals(url, driver.getCurrentUrl(), " url is not correct");
+		pushThebutton();
+		Thread.sleep(3000);
 
-//		if (actualTitle.contentEquals(expectedtitle)) {
-//			System.out.println("Test Passed!");
-//		} else {
-//			System.out.println("Test Failed");
-//		}
+
 
 	}
 
 }
+
+/* wydrukowaæ text z buttona -> span text element w elemencie (podpowiedz xpath)
+oknienko maila do logowania -> kliknaæ w element -> 2 assercie, zweryfikuj¹ czy te inputy s¹ widoczne
+-> wartoœæ w login i has³o (prawdziwe dane)-> zaloguj siê -> assercje
+dodaæ jeszcze jeden test niepoprawne logowanie -> assercja
+Najpózniej do œrody 
+dynamiczne wait'y- nastêpny temat --> z Kacprem
+*/
