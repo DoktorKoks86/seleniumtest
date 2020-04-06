@@ -29,8 +29,53 @@ public class Page_Object extends Config {
 		return driver.findElement(By.className("cmp-popup_content"));
 	}
 
+	public WebElement mailButton() {
+		return driver.findElement(By.cssSelector("li.headerNavItem.mail")); 
+
+	}
+	
+	public WebElement textFromMailButton() {
+		return mailButton().findElement(By.xpath("//span[contains(@class, 'serviceName') and text() = 'E-MAIL']"));
+	}
+	public WebElement loginField() {
+		return driver.findElement(By.cssSelector("input#mailFormLogin"));
+	}
+	
+	public WebElement passwordField() {
+		return driver.findElement(By.cssSelector("input#mailFormPassword"));
+	}
+	
+	public WebElement loginLabel() {
+		return driver.findElement(By.xpath("[contains(@class,'label.inputData') and contains(text(),'Podaj e-mail:')]"));
+	}
+	
+	public WebElement passwordLabel() {
+		return driver.findElement(By.xpath("[contains(@class,'label.inputData') and contains(text(),'Has³o:')]"));
+	}
+	
+	public WebElement loginButton() {
+		return driver.findElement(By.cssSelector("input.loginButton"));
+	}
+	
+		
 	void pushThebutton() {
 		getToServiceButton().click();
+	}
+	
+	void pushTheMailButton() {
+		mailButton().click();
+	}
+	
+	void insertLogin() {
+		loginField().sendKeys("antek.wilk@onet.pl");
+	}
+	
+	void insertPassword() {
+		passwordField().sendKeys("DoktorKoks86");
+	}
+	
+	void pushTheLoginButton() {
+		loginButton().click();
 	}
 
 }
