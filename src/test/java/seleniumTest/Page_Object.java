@@ -30,7 +30,7 @@ public class Page_Object extends Config {
 	}
 
 	public WebElement mailButton() {
-		return driver.findElement(By.cssSelector("li.headerNavItem.mail")); 
+		return driver.findElement(By.cssSelector(".headerNavItem.mail")); 
 
 	}
 	
@@ -45,18 +45,30 @@ public class Page_Object extends Config {
 		return driver.findElement(By.cssSelector("input#mailFormPassword"));
 	}
 	
+	public WebElement loginFrame() {
+		return driver.findElement(By.cssSelector("//*[@id='loginForm']"));
+	}
+	
+	
 	public WebElement loginLabel() {
-		return driver.findElement(By.xpath("[contains(@class,'label.inputData') and contains(text(),'Podaj e-mail:')]"));
+		return loginFrame().findElement(By.xpath("//*[contains(@class, 'inputData')]//*[text() = 'Podaj e-mail:']"));
 	}
 	
 	public WebElement passwordLabel() {
-		return driver.findElement(By.xpath("[contains(@class,'label.inputData') and contains(text(),'Has³o:')]"));
+		return loginFrame().findElement(By.xpath("//*[contains(@class, 'inputData')]//*[text() = 'Has³o:']"));
 	}
 	
 	public WebElement loginButton() {
 		return driver.findElement(By.cssSelector("input.loginButton"));
 	}
 	
+	public WebElement frameInfoAboutFaildLogin() {
+		return driver.findElement(By.cssSelector(".messageContent"));
+	}
+	
+	public WebElement InfoAboutFaildLogin() {
+		return frameInfoAboutFaildLogin().findElement(By.xpath("//span[contains(@class, 'content') and text() = 'Niepoprawny e-mail lub has³o.']"));
+	}
 		
 	void pushThebutton() {
 		getToServiceButton().click();
@@ -67,16 +79,23 @@ public class Page_Object extends Config {
 	}
 	
 	void insertLogin() {
-		loginField().sendKeys("antek.wilk@onet.pl");
+		loginField().sendKeys(login);
 	}
 	
 	void insertPassword() {
-		passwordField().sendKeys("DoktorKoks86");
+		passwordField().sendKeys(password);
 	}
 	
 	void pushTheLoginButton() {
 		loginButton().click();
 	}
 
+	void insertFakeLogin() {
+		loginField().sendKeys(fakelogin);
+	}
+	
+	void insertFakePassword() {
+		passwordField().sendKeys(fakePasword);
+	}
 }
 
