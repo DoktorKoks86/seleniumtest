@@ -78,11 +78,11 @@ public class Page_Object extends Config {
 		mailButton().click();
 	}
 	
-	void insertLogin() {
+	void insertLogin(String login) {
 		loginField().sendKeys(login);
 	}
 	
-	void insertPassword() {
+	void insertPassword(String password) {
 		passwordField().sendKeys(password);
 	}
 	
@@ -90,12 +90,5 @@ public class Page_Object extends Config {
 		loginButton().click();
 	}
 
-	void insertFakeLogin() {
-		loginField().sendKeys(fakelogin);
-	}
-	
-	void insertFakePassword() {
-		passwordField().sendKeys(fakePasword);
-	}
 }
 

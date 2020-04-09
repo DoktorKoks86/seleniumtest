@@ -20,7 +20,7 @@ public class SeleniumTest extends Page_Object {
 	}
 
 	@Test
-	public void test1() throws InterruptedException {
+	public void goodUser() throws InterruptedException {
 
 		Assert.assertTrue(popUpWindow().isDisplayed(), "not displayed");
 		Assert.assertTrue(getToServiceButton().isDisplayed(), "not displayed");
@@ -33,8 +33,8 @@ public class SeleniumTest extends Page_Object {
 		Thread.sleep(3000);
 		Assert.assertTrue(passwordField().isDisplayed(), "The password label did not display");
 		Assert.assertTrue(loginField().isDisplayed(), "The login field is not displayed");
-		insertLogin();
-		insertPassword();
+		insertLogin(login);
+		insertPassword(password);
 		Thread.sleep(3000);
 		// System.out.println(loginLabel().getText() +" the mentioned text is
 		// displayed");
@@ -44,23 +44,22 @@ public class SeleniumTest extends Page_Object {
 		System.out.println("url of the post page is " + driver.getCurrentUrl());
 
 	}
-
 	
-	@Test public void test2() throws InterruptedException {
+	@Test public void badUser() throws InterruptedException {
 	  
 	  Assert.assertTrue(popUpWindow().isDisplayed(), "not displayed");
 	  Assert.assertTrue(getToServiceButton().isDisplayed(), "not displayed");
 	  Assert.assertEquals(url, driver.getCurrentUrl(), " url is not correct");
 	  pushThebutton(); Thread.sleep(3000);
-	  Assert.assertTrue(mailButton().isDisplayed(),
-	  "The mail button did not display");
-	  System.out.println(textFromMailButton().getText() +
-	  " is mentioned on the onet webside"); pushTheMailButton(); Thread.sleep(3000);
+	  Assert.assertTrue(mailButton().isDisplayed(),"The mail button did not display");
+	  System.out.println(textFromMailButton().getText() + " is mentioned on the onet webside"); 
+	  pushTheMailButton(); 
+	  Thread.sleep(3000);
 	  Assert.assertTrue(passwordField().isDisplayed(), "The password label did not display");
 	  Assert.assertTrue(loginField().isDisplayed(), "The login field is not displayed"); 
-	  insertFakeLogin(); 
+	  insertLogin(fakelogin);
 	  Thread.sleep(3000);
-	  insertFakePassword();
+	  insertPassword(fakePasword);
 	  Thread.sleep(3000);  
 	  pushTheLoginButton(); 
 	  Thread.sleep(4000);
