@@ -4,15 +4,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Page_Object extends Config {
 
 	public static WebDriver driver;
+	public static WebDriverWait wait;
 
 	public static void startBrowser() {
 		System.setProperty("webdriver.chrome.driver",
 				"C:\\Users\\Cz³owiek\\maven_selenium\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
+		wait = new WebDriverWait(driver, 10);
 		driver.get(url);
 
 	}
@@ -26,12 +30,12 @@ public class Page_Object extends Config {
 	}
 
 	public WebElement popUpWindow() {
-		return driver.findElement(By.className("cmp-popup_content"));
+		 return wait.until(ExpectedConditions.visibilityOf(
+				 driver.findElement(By.className("cmp-popup_content"))));
 	}
 
 	public WebElement mailButton() {
-		return driver.findElement(By.cssSelector(".headerNavItem.mail")); 
-
+		return wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".headerNavItem.mail")));
 	}
 	
 	public WebElement textFromMailButton() {
@@ -72,10 +76,12 @@ public class Page_Object extends Config {
 		
 	void pushThebutton() {
 		getToServiceButton().click();
+		wait.until(ExpectedConditions.invisibilityOf(getToServiceButton()));
 	}
 	
 	void pushTheMailButton() {
 		mailButton().click();
+		
 	}
 	
 	void insertLogin(String login) {
