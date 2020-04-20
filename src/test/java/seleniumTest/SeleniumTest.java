@@ -11,7 +11,7 @@ public class SeleniumTest extends Page_Object {
 
 	@Before
 	public void setUp() throws Exception {
-		startBrowser();
+		startBrowser(url);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -67,6 +67,10 @@ public class SeleniumTest extends Page_Object {
 }
 
 /* 51 linia -> przycisk na popup pushThebutton dodac waita, który czeka na niewidocznoœæ elementu -> test nie przejdzie do póki nie zniknie/ bêdzie niewidoczny
+Jak jedziemy z automatyzacj¹ FCC, to jedziemy:
+
+
+
 
 
 */

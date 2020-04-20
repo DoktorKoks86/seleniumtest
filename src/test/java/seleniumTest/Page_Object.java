@@ -12,7 +12,7 @@ public class Page_Object extends Config {
 	public static WebDriver driver;
 	public static WebDriverWait wait;
 
-	public static void startBrowser() {
+	public static void startBrowser(String url) {
 		System.setProperty("webdriver.chrome.driver",
 				"C:\\Users\\Cz³owiek\\maven_selenium\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
